@@ -1,0 +1,24 @@
+{
+    "name": "ridetracker-client",
+    "version": "0.9.0",
+    "description": "A TypeScript package to providef low-level API clients for all services.",
+    "scripts": {
+        "build": "npx tsc",
+        "test": "npx jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RideTracker/RideTrackerClient.git"
+    },
+    "author": "Nora Söderlund",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://github.com/RideTracker/RideTrackerClient/issues"
+    },
+    "homepage": "https://github.com/RideTracker/RideTrackerClient#readme",
+    "devDependencies": {
+        "@types/jest": "^29.5.1",
+        "ts-jest": "^29.1.0",
+        "typescript": "^5.0.4"
+    }
+}
