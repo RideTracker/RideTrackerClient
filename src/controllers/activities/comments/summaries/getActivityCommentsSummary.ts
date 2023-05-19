@@ -1,6 +1,6 @@
-import Client from "../../../..";
+import Client, { DefaultResponse } from "../../../..";
 
-export type GetActivityCommentsSummaryResponse = Response & {
+export type GetActivityCommentsSummaryResponse = DefaultResponse & {
     commentsCount: Number;
 
     comments: {

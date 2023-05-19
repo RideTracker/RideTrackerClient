@@ -1,6 +1,6 @@
-import Client from "../..";
+import Client, { DefaultResponse } from "../..";
 
-export type GetFeedResponse = Response & {
+export type GetFeedResponse = DefaultResponse & {
     activities: {
         id: string;
         timestamp: number;

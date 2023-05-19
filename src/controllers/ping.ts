@@ -1,6 +1,6 @@
-import Client from "..";
+import Client, { DefaultResponse } from "..";
 
-export type PingResponse = Response & {
+export type PingResponse = DefaultResponse & {
     ping: string;
 };
 

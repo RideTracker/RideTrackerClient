@@ -1,6 +1,6 @@
-import Client from "../../..";
+import Client, { DefaultResponse } from "../../..";
 
-export type UploadUserAvatarResponse = Response & {
+export type UploadUserAvatarResponse = DefaultResponse & {
     userAvatar: {
         id: string;
     };

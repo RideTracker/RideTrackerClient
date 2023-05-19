@@ -1,4 +1,4 @@
-import Client from "../../..";
+import Client, { DefaultResponse } from "../../..";
 
 export type UpdateActivityCommentResponse = Response;
 

@@ -1,6 +1,6 @@
-import Client from "../../..";
+import Client, { DefaultResponse } from "../../..";
 
-export type GetProfileBikesResponse = Response & {
+export type GetProfileBikesResponse = DefaultResponse & {
     bikes: string[];
     offset: number;
 };

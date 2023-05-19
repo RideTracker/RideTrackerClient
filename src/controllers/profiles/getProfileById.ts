@@ -1,6 +1,6 @@
-import Client from "../..";
+import Client, { DefaultResponse } from "../..";
 
-export type GetProfileResponse = Response & {
+export type GetProfileResponse = DefaultResponse & {
     profile: {
         user: {
             id: string;

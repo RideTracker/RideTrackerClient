@@ -1,6 +1,6 @@
-import Client from "../..";
+import Client, { DefaultResponse } from "../..";
 
-export type CreateActivityResponse = Response & {
+export type CreateActivityResponse = DefaultResponse & {
     activity: {
         id: string;
     };

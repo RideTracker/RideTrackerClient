@@ -1,6 +1,6 @@
-import Client from "../../..";
+import Client, { DefaultResponse } from "../../..";
 
-export type LoginVerificationResponse = Response & {
+export type LoginVerificationResponse = DefaultResponse & {
     key: string;
 };
 

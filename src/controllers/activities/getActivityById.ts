@@ -1,6 +1,6 @@
-import Client from "../..";
+import Client, { DefaultResponse } from "../..";
 
-export type GetActivityResponse = Response & {
+export type GetActivityResponse = DefaultResponse & {
     activity: {
         id: string;
         polylines?: string[];

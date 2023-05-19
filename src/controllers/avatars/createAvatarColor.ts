@@ -1,6 +1,6 @@
-import Client from "../..";
+import Client, { DefaultResponse } from "../..";
 
-export type CreateAvatarColorResponse = Response & {
+export type CreateAvatarColorResponse = DefaultResponse & {
     avatar: {
         color: {
             id: string;

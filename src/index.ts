@@ -1,6 +1,6 @@
 type RequestMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
-export type Response = {
+export type DefaultResponse = {
     success: boolean;
     message?: string;
 };

@@ -1,6 +1,6 @@
-import Client from "../..";
+import Client, { DefaultResponse } from "../..";
 
-export type GetBikeResponse = Response & {
+export type GetBikeResponse = DefaultResponse & {
     bike: {
         id: string;
         name: string;

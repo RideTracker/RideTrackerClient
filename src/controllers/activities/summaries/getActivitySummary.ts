@@ -1,6 +1,6 @@
-import Client from "../../..";
+import Client, { DefaultResponse } from "../../..";
 
-export type GetActivitySummaryResponse = Response & {
+export type GetActivitySummaryResponse = DefaultResponse & {
     activitySummary: {
         startArea: string;
         finishArea: string;

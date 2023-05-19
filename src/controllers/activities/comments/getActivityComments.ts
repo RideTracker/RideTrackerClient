@@ -1,6 +1,6 @@
-import Client from "../../..";
+import Client, { DefaultResponse } from "../../..";
 
-export type GetActivityCommentsResponse = Response & {
+export type GetActivityCommentsResponse = DefaultResponse & {
     comments: {
         id: string;
         parent?: string;

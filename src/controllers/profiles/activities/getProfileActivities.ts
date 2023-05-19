@@ -1,6 +1,6 @@
-import Client from "../../..";
+import Client, { DefaultResponse } from "../../..";
 
-export type GetProfileActivitiesResponse = Response & {
+export type GetProfileActivitiesResponse = DefaultResponse & {
     activities: string[];
     offset: number;
 };
