@@ -1,4 +1,5 @@
-import Client, { DefaultResponse } from "../../..";
+import Client from "../../..";
+import { DefaultResponse } from "../../../models/DefaultResponse";
 
 export type GetActivitySummaryResponse = DefaultResponse & {
     activitySummary: {
@@ -20,7 +21,7 @@ export type GetActivitySummaryResponse = DefaultResponse & {
 };
 
 export default async function getActivitySummary(client: Client, activityId: string): Promise<GetActivitySummaryResponse> {
-    const url = new URL(`/api/activities/${activityId}/summary`, client.host);
+    const url = new URL(`${client.host}/api/activities/${activityId}/summary`);
 
     return client.request("GET", url);
 };

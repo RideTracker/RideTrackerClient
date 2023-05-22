@@ -1,4 +1,5 @@
-import Client, { DefaultResponse } from "../../..";
+import Client from "../../..";
+import { DefaultResponse } from "../../../models/DefaultResponse";
 
 export type GetProfileActivitiesResponse = DefaultResponse & {
     activities: string[];
@@ -6,7 +7,7 @@ export type GetProfileActivitiesResponse = DefaultResponse & {
 };
 
 export default async function getProfileActivities(client: Client, userId: string, offset: number): Promise<GetProfileActivitiesResponse> {
-    const url = new URL(`/api/profiles/${userId}/activities`, client.host);
+    const url = new URL(`${client.host}/api/profiles/${userId}/activities`);
 
     const body = {
         offset

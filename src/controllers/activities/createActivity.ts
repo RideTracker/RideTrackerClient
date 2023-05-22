@@ -1,4 +1,5 @@
-import Client, { DefaultResponse } from "../..";
+import Client from "../..";
+import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type CreateActivityResponse = DefaultResponse & {
     activity: {
@@ -7,7 +8,7 @@ export type CreateActivityResponse = DefaultResponse & {
 };
 
 export default async function createActivity(client: Client, sessions: any, title?: string, description?: string, bikeId?: string): Promise<CreateActivityResponse> {
-    const url = new URL("/api/activities/create", client.host);
+    const url = new URL(`${client.host}/api/activities/create`);
 
     const body = {
         sessions,

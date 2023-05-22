@@ -1,4 +1,5 @@
-import Client, { DefaultResponse } from "../../..";
+import Client from "../../..";
+import { DefaultResponse } from "../../../models/DefaultResponse";
 
 export type GetActivityCommentsResponse = DefaultResponse & {
     comments: {
@@ -16,7 +17,7 @@ export type GetActivityCommentsResponse = DefaultResponse & {
 };
 
 export default async function getActivityComments(client: Client, activityId: string): Promise<GetActivityCommentsResponse> {
-    const url = new URL(`/api/activities/${activityId}/comments`, client.host);
+    const url = new URL(`${client.host}/api/activities/${activityId}/comments`);
 
     return client.request("GET", url);
 };

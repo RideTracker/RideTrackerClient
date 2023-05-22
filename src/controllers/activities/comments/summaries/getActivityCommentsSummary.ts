@@ -1,4 +1,5 @@
-import Client, { DefaultResponse } from "../../../..";
+import Client from "../../../..";
+import { DefaultResponse } from "../../../../models/DefaultResponse";
 
 export type GetActivityCommentsSummaryResponse = DefaultResponse & {
     commentsCount: Number;
@@ -19,7 +20,7 @@ export type GetActivityCommentsSummaryResponse = DefaultResponse & {
 };
 
 export default async function getActivityCommentsSummary(client: Client, activityId: string): Promise<GetActivityCommentsSummaryResponse> {
-    const url = new URL(`/api/activities/${activityId}/comments/summary`, client.host);
+    const url = new URL(`${client.host}/api/activities/${activityId}/comments/summary`);
 
     return client.request("GET", url);
 };

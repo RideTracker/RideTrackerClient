@@ -1,4 +1,5 @@
-import Client, { DefaultResponse } from "../..";
+import Client from "../..";
+import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type GetProfileResponse = DefaultResponse & {
     profile: {
@@ -16,7 +17,7 @@ export type GetProfileResponse = DefaultResponse & {
 };
 
 export default async function getProfileById(client: Client, userId: string): Promise<GetProfileResponse> {
-    const url = new URL(`/api/profiles/${userId}`, client.host);
+    const url = new URL(`${client.host}/api/profiles/${userId}`);
 
     return client.request("GET", url);
 };

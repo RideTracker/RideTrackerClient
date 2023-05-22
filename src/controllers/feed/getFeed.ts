@@ -1,4 +1,5 @@
-import Client, { DefaultResponse } from "../..";
+import Client from "../..";
+import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type GetFeedResponse = DefaultResponse & {
     activities: {
@@ -8,7 +9,7 @@ export type GetFeedResponse = DefaultResponse & {
 };
 
 export default async function getFeed(client: Client, search?: string, order?: string, timeline?: string): Promise<GetFeedResponse> {
-    const url = new URL("/api/feed", client.host);
+    const url = new URL(`${client.host}/api/feed`);
 
     if(search?.length)
         url.searchParams.append("search", search);

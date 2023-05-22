@@ -1,9 +1,4 @@
-type RequestMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
-
-export type DefaultResponse = {
-    success: boolean;
-    message?: string;
-};
+import { Method } from "./models/Method";
 
 export default class Client {
     host: string;
@@ -14,7 +9,7 @@ export default class Client {
         this.token = token;
     };
 
-    async request(method: RequestMethod, url: URL, initialHeaders?: Record<string, string>, body?: BodyInit | undefined) {
+    async request(method: Method, url: URL, initialHeaders?: Record<string, string>, body?: BodyInit | undefined) {
         const headers: Record<string, string> = {
             ...initialHeaders
         };
@@ -39,3 +34,24 @@ export default class Client {
         return result;
     };
 };
+
+export { default as ping } from "./controllers/ping";
+export { default as getActivityById } from "./controllers/activities/getActivityById";
+export { default as createActivity } from "./controllers/activities/createActivity";
+export { default as getActivitySummary } from "./controllers/activities/summaries/getActivitySummary";
+export { default as updateActivityComment } from "./controllers/activities/comments/updateActivityComment";
+export { default as getActivityComments } from "./controllers/activities/comments/getActivityComments";
+export { default as deleteActivityComment } from "./controllers/activities/comments/deleteActivityComment";
+export { default as createActivityComment } from "./controllers/activities/comments/createActivityComment";
+export { default as getActivityCommentsSummary } from "./controllers/activities/comments/summaries/getActivityCommentsSummary";
+export { default as loginUser } from "./controllers/auth/loginUser";
+export { default as registerUser } from "./controllers/auth/registerUser";
+export { default as verifyLogin } from "./controllers/auth/verification/verifyLogin";
+export { default as createBike } from "./controllers/bikes/createBike";
+export { default as getBike } from "./controllers/bikes/getBike";
+export { default as getBikes } from "./controllers/bikes/getBikes";
+export { default as getFeed } from "./controllers/feed/getFeed";
+export { default as getProfileActivities } from "./controllers/profiles/activities/getProfileActivities";
+export { default as getProfileBikes } from "./controllers/profiles/bikes/getProfileBikes";
+export { default as getProfileById } from "./controllers/profiles/getProfileById";
+export { default as uploadUserAvatar } from "./controllers/user/avatars/uploadUserAvatar";

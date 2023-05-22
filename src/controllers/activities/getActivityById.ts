@@ -1,4 +1,5 @@
-import Client, { DefaultResponse } from "../..";
+import Client from "../..";
+import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type GetActivityResponse = DefaultResponse & {
     activity: {
@@ -64,7 +65,7 @@ export type GetActivityResponse = DefaultResponse & {
 };
 
 export default async function getActivityById(client: Client, activityId: string): Promise<GetActivityResponse> {
-    const url = new URL(`/api/activities/${activityId}`, client.host);
+    const url = new URL(`${client.host}/api/activities/${activityId}`);
 
     return client.request("GET", url);
 };

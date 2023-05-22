@@ -1,11 +1,12 @@
-import Client, { DefaultResponse } from "../..";
+import Client from "../..";
+import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type LoginResponse = DefaultResponse & {
     verification: string;
 };
 
 export default async function loginUser(client: Client, email: string, password: string): Promise<LoginResponse> {
-    const url = new URL("/api/auth/login", client.host);
+    const url = new URL(`${client.host}/api/auth/login`);
 
     const body = {
         email,

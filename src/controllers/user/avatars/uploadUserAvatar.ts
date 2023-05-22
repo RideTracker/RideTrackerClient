@@ -1,4 +1,5 @@
-import Client, { DefaultResponse } from "../../..";
+import Client from "../../..";
+import { DefaultResponse } from "../../../models/DefaultResponse";
 
 export type UploadUserAvatarResponse = DefaultResponse & {
     userAvatar: {
@@ -7,7 +8,7 @@ export type UploadUserAvatarResponse = DefaultResponse & {
 };
 
 export default async function uploadUserAvatar(client: Client, image: string, combination: string): Promise<UploadUserAvatarResponse> {
-    const url = new URL(`/api/user/avatar`, client.host);
+    const url = new URL(`${client.host}/api/user/avatar`);
 
     const body = {
         image,
