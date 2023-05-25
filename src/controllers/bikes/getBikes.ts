@@ -1,4 +1,5 @@
-import Client, { DefaultResponse } from "../..";
+import Client from "../..";
+import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type GetBikesResponse = DefaultResponse & {
     bikes: {
