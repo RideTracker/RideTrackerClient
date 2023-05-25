@@ -1,5 +1,26 @@
 import { Method } from "./models/Method";
 
+import ping from "./controllers/ping";
+import getActivityById from "./controllers/activities/getActivityById";
+import createActivity from "./controllers/activities/createActivity";
+import getActivitySummary from "./controllers/activities/summaries/getActivitySummary";
+import updateActivityComment from "./controllers/activities/comments/updateActivityComment";
+import getActivityComments from "./controllers/activities/comments/getActivityComments";
+import deleteActivityComment from "./controllers/activities/comments/deleteActivityComment";
+import createActivityComment from "./controllers/activities/comments/createActivityComment";
+import getActivityCommentsSummary from "./controllers/activities/comments/summaries/getActivityCommentsSummary";
+import loginUser from "./controllers/auth/loginUser";
+import registerUser from "./controllers/auth/registerUser";
+import verifyLogin from "./controllers/auth/verification/verifyLogin";
+import createBike from "./controllers/bikes/createBike";
+import getBike from "./controllers/bikes/getBike";
+import getBikes from "./controllers/bikes/getBikes";
+import getFeed from "./controllers/feed/getFeed";
+import getProfileActivities from "./controllers/profiles/activities/getProfileActivities";
+import getProfileBikes from "./controllers/profiles/bikes/getProfileBikes";
+import getProfileById from "./controllers/profiles/getProfileById";
+import uploadUserAvatar from "./controllers/user/avatars/uploadUserAvatar";
+
 export default class Client {
     host: string;
     token?: string;
@@ -35,23 +56,25 @@ export default class Client {
     };
 };
 
-export { default as ping } from "./controllers/ping";
-export { default as getActivityById } from "./controllers/activities/getActivityById";
-export { default as createActivity } from "./controllers/activities/createActivity";
-export { default as getActivitySummary } from "./controllers/activities/summaries/getActivitySummary";
-export { default as updateActivityComment } from "./controllers/activities/comments/updateActivityComment";
-export { default as getActivityComments } from "./controllers/activities/comments/getActivityComments";
-export { default as deleteActivityComment } from "./controllers/activities/comments/deleteActivityComment";
-export { default as createActivityComment } from "./controllers/activities/comments/createActivityComment";
-export { default as getActivityCommentsSummary } from "./controllers/activities/comments/summaries/getActivityCommentsSummary";
-export { default as loginUser } from "./controllers/auth/loginUser";
-export { default as registerUser } from "./controllers/auth/registerUser";
-export { default as verifyLogin } from "./controllers/auth/verification/verifyLogin";
-export { default as createBike } from "./controllers/bikes/createBike";
-export { default as getBike } from "./controllers/bikes/getBike";
-export { default as getBikes } from "./controllers/bikes/getBikes";
-export { default as getFeed } from "./controllers/feed/getFeed";
-export { default as getProfileActivities } from "./controllers/profiles/activities/getProfileActivities";
-export { default as getProfileBikes } from "./controllers/profiles/bikes/getProfileBikes";
-export { default as getProfileById } from "./controllers/profiles/getProfileById";
-export { default as uploadUserAvatar } from "./controllers/user/avatars/uploadUserAvatar";
+export {
+    ping,
+    getActivityById,
+    createActivity,
+    getActivitySummary,
+    updateActivityComment,
+    getActivityComments,
+    deleteActivityComment,
+    createActivityComment,
+    getActivityCommentsSummary,
+    loginUser,
+    registerUser,
+    verifyLogin,
+    createBike,
+    getBike,
+    getBikes,
+    getFeed,
+    getProfileActivities,
+    getProfileBikes,
+    getProfileById,
+    uploadUserAvatar
+};
