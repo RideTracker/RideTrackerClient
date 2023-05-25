@@ -12,6 +12,7 @@ import getActivityCommentsSummary from "./controllers/activities/comments/summar
 import loginUser from "./controllers/auth/loginUser";
 import registerUser from "./controllers/auth/registerUser";
 import verifyLogin from "./controllers/auth/verification/verifyLogin";
+import getVerificationCode from "./controllers/auth/verification/getVerificationCode";
 import createBike from "./controllers/bikes/createBike";
 import getBike from "./controllers/bikes/getBike";
 import getBikes from "./controllers/bikes/getBikes";
@@ -69,6 +70,7 @@ export {
     loginUser,
     registerUser,
     verifyLogin,
+    getVerificationCode,
     createBike,
     getBike,
     getBikes,
