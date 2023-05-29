@@ -21,6 +21,7 @@ import getProfileActivities from "./controllers/profiles/activities/getProfileAc
 import getProfileBikes from "./controllers/profiles/bikes/getProfileBikes";
 import getProfileById from "./controllers/profiles/getProfileById";
 import uploadUserAvatar from "./controllers/user/avatars/uploadUserAvatar";
+import getRandomToken from "./controllers/auth/getRandomToken";
 
 export default class Client {
     host: string;
@@ -71,6 +72,7 @@ export {
     registerUser,
     verifyLogin,
     getVerificationCode,
+    getRandomToken,
     createBike,
     getBike,
     getBikes,
