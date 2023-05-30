@@ -3,7 +3,7 @@ import { DefaultResponse } from "../../../models/DefaultResponse";
 
 export type UpdateActivityCommentResponse = DefaultResponse;
 
-export default async function updateActivityComment(client: Client, activityId: string, commentId: string, message: string): Promise<UpdateActivityCommentResponse> {
+export async function updateActivityComment(client: Client, activityId: string, commentId: string, message: string): Promise<UpdateActivityCommentResponse> {
     const url = new URL(`${client.host}/api/activities/${activityId}/comments/${commentId}`);
 
     const body = {

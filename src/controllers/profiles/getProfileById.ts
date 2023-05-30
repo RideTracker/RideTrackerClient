@@ -16,7 +16,7 @@ export type GetProfileResponse = DefaultResponse & {
     };
 };
 
-export default async function getProfileById(client: Client, userId: string): Promise<GetProfileResponse> {
+export async function getProfileById(client: Client, userId: string): Promise<GetProfileResponse> {
     const url = new URL(`${client.host}/api/profiles/${userId}`);
 
     return client.request("GET", url);

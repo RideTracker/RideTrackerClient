@@ -10,7 +10,7 @@ export type AuthenticateUserResponse = DefaultResponse & {
     };
 };
 
-export default async function authenticateUser(client: Client): Promise<AuthenticateUserResponse> {
+export async function authenticateUser(client: Client): Promise<AuthenticateUserResponse> {
     const url = new URL(`${client.host}/api/auth/renew`);
 
     return client.request("POST", url);

@@ -1,29 +1,5 @@
 import { Method } from "./models/Method";
 
-import ping from "./controllers/ping";
-import getActivityById from "./controllers/activities/getActivityById";
-import createActivity from "./controllers/activities/createActivity";
-import getActivitySummary from "./controllers/activities/summaries/getActivitySummary";
-import updateActivityComment from "./controllers/activities/comments/updateActivityComment";
-import getActivityComments from "./controllers/activities/comments/getActivityComments";
-import deleteActivityComment from "./controllers/activities/comments/deleteActivityComment";
-import createActivityComment from "./controllers/activities/comments/createActivityComment";
-import getActivityCommentsSummary from "./controllers/activities/comments/summaries/getActivityCommentsSummary";
-import authenticateUser from "./controllers/auth/authenticateUser";
-import loginUser from "./controllers/auth/loginUser";
-import registerUser from "./controllers/auth/registerUser";
-import verifyLogin from "./controllers/auth/verification/verifyLogin";
-import getVerificationCode from "./controllers/auth/verification/getVerificationCode";
-import createBike from "./controllers/bikes/createBike";
-import getBike from "./controllers/bikes/getBike";
-import getBikes from "./controllers/bikes/getBikes";
-import getFeed from "./controllers/feed/getFeed";
-import getProfileActivities from "./controllers/profiles/activities/getProfileActivities";
-import getProfileBikes from "./controllers/profiles/bikes/getProfileBikes";
-import getProfileById from "./controllers/profiles/getProfileById";
-import uploadUserAvatar from "./controllers/user/avatars/uploadUserAvatar";
-import getRandomToken from "./controllers/auth/getRandomToken";
-
 export default class Client {
     host: string;
     token?: string;
@@ -59,28 +35,29 @@ export default class Client {
     };
 };
 
-export {
-    ping,
-    getActivityById,
-    createActivity,
-    getActivitySummary,
-    updateActivityComment,
-    getActivityComments,
-    deleteActivityComment,
-    createActivityComment,
-    getActivityCommentsSummary,
-    authenticateUser,
-    loginUser,
-    registerUser,
-    verifyLogin,
-    getVerificationCode,
-    getRandomToken,
-    createBike,
-    getBike,
-    getBikes,
-    getFeed,
-    getProfileActivities,
-    getProfileBikes,
-    getProfileById,
-    uploadUserAvatar
-};
+export { Method };
+export * from "./models/DefaultResponse";
+
+export * from "./controllers/ping";
+export * from "./controllers/activities/getActivityById";
+export * from "./controllers/activities/createActivity";
+export * from "./controllers/activities/summaries/getActivitySummary";
+export * from "./controllers/activities/comments/updateActivityComment";
+export * from "./controllers/activities/comments/getActivityComments";
+export * from "./controllers/activities/comments/deleteActivityComment";
+export * from "./controllers/activities/comments/createActivityComment";
+export * from "./controllers/activities/comments/summaries/getActivityCommentsSummary";
+export * from "./controllers/auth/authenticateUser";
+export * from "./controllers/auth/loginUser";
+export * from "./controllers/auth/registerUser";
+export * from "./controllers/auth/verification/verifyLogin";
+export * from "./controllers/auth/verification/getVerificationCode";
+export * from "./controllers/bikes/createBike";
+export * from "./controllers/bikes/getBike";
+export * from "./controllers/bikes/getBikes";
+export * from "./controllers/feed/getFeed";
+export * from "./controllers/profiles/activities/getProfileActivities";
+export * from "./controllers/profiles/bikes/getProfileBikes";
+export * from "./controllers/profiles/getProfileById";
+export * from "./controllers/user/avatars/uploadUserAvatar";
+export * from "./controllers/auth/getRandomToken";

@@ -6,7 +6,7 @@ export type GetProfileActivitiesResponse = DefaultResponse & {
     offset: number;
 };
 
-export default async function getProfileActivities(client: Client, userId: string, offset: number): Promise<GetProfileActivitiesResponse> {
+export async function getProfileActivities(client: Client, userId: string, offset: number): Promise<GetProfileActivitiesResponse> {
     const url = new URL(`${client.host}/api/profiles/${userId}/activities`);
 
     const body = {

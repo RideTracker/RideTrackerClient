@@ -6,7 +6,7 @@ export type GetProfileBikesResponse = DefaultResponse & {
     offset: number;
 };
 
-export default async function getProfileBikes(client: Client, userId: string, offset: number): Promise<GetProfileBikesResponse> {
+export async function getProfileBikes(client: Client, userId: string, offset: number): Promise<GetProfileBikesResponse> {
     const url = new URL(`${client.host}/api/profiles/${userId}/bikes`);
 
     const body = {

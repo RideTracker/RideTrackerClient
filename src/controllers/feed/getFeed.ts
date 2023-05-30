@@ -8,7 +8,7 @@ export type GetFeedResponse = DefaultResponse & {
     }[];
 };
 
-export default async function getFeed(client: Client, offset: number = 0, search?: string, order?: string, timeline?: string): Promise<GetFeedResponse> {
+export async function getFeed(client: Client, offset: number = 0, search?: string, order?: string, timeline?: string): Promise<GetFeedResponse> {
     const url = new URL(`${client.host}/api/feed`);
 
     url.searchParams.append("offset", offset.toString());

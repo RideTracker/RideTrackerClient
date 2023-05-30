@@ -5,7 +5,7 @@ export type LoginResponse = DefaultResponse & {
     verification: string;
 };
 
-export default async function loginUser(client: Client, email: string, password: string): Promise<LoginResponse> {
+export async function loginUser(client: Client, email: string, password: string): Promise<LoginResponse> {
     const url = new URL(`${client.host}/api/auth/login`);
 
     const body = {

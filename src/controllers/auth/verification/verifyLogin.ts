@@ -5,7 +5,7 @@ export type LoginVerificationResponse = DefaultResponse & {
     key: string;
 };
 
-export default async function verifyLogin(client: Client, verificationId: string, verificationCode: string): Promise<LoginVerificationResponse> {
+export async function verifyLogin(client: Client, verificationId: string, verificationCode: string): Promise<LoginVerificationResponse> {
     const url = new URL(`${client.host}/api/auth/login/verify`);
 
     const body = {

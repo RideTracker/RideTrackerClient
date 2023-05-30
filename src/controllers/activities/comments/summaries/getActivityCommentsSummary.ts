@@ -19,7 +19,7 @@ export type GetActivityCommentsSummaryResponse = DefaultResponse & {
     }[];
 };
 
-export default async function getActivityCommentsSummary(client: Client, activityId: string): Promise<GetActivityCommentsSummaryResponse> {
+export async function getActivityCommentsSummary(client: Client, activityId: string): Promise<GetActivityCommentsSummaryResponse> {
     const url = new URL(`${client.host}/api/activities/${activityId}/comments/summary`);
 
     return client.request("GET", url);

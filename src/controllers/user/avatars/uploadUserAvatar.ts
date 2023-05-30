@@ -7,7 +7,7 @@ export type UploadUserAvatarResponse = DefaultResponse & {
     };
 };
 
-export default async function uploadUserAvatar(client: Client, image: string, combination: string): Promise<UploadUserAvatarResponse> {
+export async function uploadUserAvatar(client: Client, image: string, combination: string): Promise<UploadUserAvatarResponse> {
     const url = new URL(`${client.host}/api/user/avatar`);
 
     const body = {
