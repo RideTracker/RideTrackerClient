@@ -9,6 +9,7 @@ import getActivityComments from "./controllers/activities/comments/getActivityCo
 import deleteActivityComment from "./controllers/activities/comments/deleteActivityComment";
 import createActivityComment from "./controllers/activities/comments/createActivityComment";
 import getActivityCommentsSummary from "./controllers/activities/comments/summaries/getActivityCommentsSummary";
+import authenticateUser from "./controllers/auth/authenticateUser";
 import loginUser from "./controllers/auth/loginUser";
 import registerUser from "./controllers/auth/registerUser";
 import verifyLogin from "./controllers/auth/verification/verifyLogin";
@@ -68,6 +69,7 @@ export {
     deleteActivityComment,
     createActivityComment,
     getActivityCommentsSummary,
+    authenticateUser,
     loginUser,
     registerUser,
     verifyLogin,
