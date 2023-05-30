@@ -2,7 +2,7 @@ import Client from "../../../..";
 import { DefaultResponse } from "../../../../models/DefaultResponse";
 
 export type GetActivityCommentsSummaryResponse = DefaultResponse & {
-    commentsCount: Number;
+    commentsCount: number;
 
     comments: {
         id: string;
