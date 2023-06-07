@@ -57,6 +57,7 @@ export * from "./controllers/bikes/getBike";
 export * from "./controllers/bikes/getBikes";
 export * from "./controllers/feed/getFeed";
 export * from "./controllers/maps/getMapsSearchPredictions";
+export * from "./controllers/maps/getMapsGeocode";
 export * from "./controllers/profiles/activities/getProfileActivities";
 export * from "./controllers/profiles/bikes/getProfileBikes";
 export * from "./controllers/profiles/getProfileById";
