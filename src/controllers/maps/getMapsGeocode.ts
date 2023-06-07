@@ -4,8 +4,8 @@ import { PlaceAutocompletePrediction } from "../../models/PlaceAutocompletePredi
 
 export type GetMapsGeocodeResponse = DefaultResponse & {
     places: {
+        placeId: string;
         address: string;
-
         location: {
             latitude: number;
             longitude: number;
