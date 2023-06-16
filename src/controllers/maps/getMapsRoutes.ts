@@ -2,7 +2,11 @@ import Client from "../..";
 import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type GetMapsRoutesResponse = DefaultResponse & {
-    polylines: string[];
+    routes: {
+        polyline: string;
+        distance: number;
+        duration: string;
+    }[];
 };
 
 export async function getMapsRoutes(client: Client, waypoints: {
