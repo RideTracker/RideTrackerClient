@@ -27,7 +27,7 @@ export default class Client {
         });
 
         if(response.status !== 200)
-            throw new Error("Unexpected HTTP error, status code " + response.status);
+            throw new Error("Unexpected HTTP error, status code " + response.status + " " + response.statusText + "\nBody: " + (await response.text()));
         
         const result = await response.json();
 
