@@ -1,10 +1,14 @@
 import { Method } from "./models/Method";
 
 export default class Client {
+    userAgent: string;
+
     host: string;
     token?: string;
 
-    constructor(host: string, token?: string) {
+    constructor(userAgent: string, host: string, token?: string) {
+        this.userAgent = userAgent;
+
         this.host = host;
         this.token = token;
     };
@@ -13,6 +17,8 @@ export default class Client {
         const headers: Record<string, string> = {
             ...initialHeaders
         };
+
+        headers["User-Agent"] = this.userAgent;
 
         if(this.token)
             headers["Authorization"] = `Bearer ${this.token}`;
