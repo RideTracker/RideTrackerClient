@@ -15,5 +15,5 @@ export async function createBike(client: Client, name: string): Promise<CreateBi
         name
     };
 
-    return client.request("GET", url, undefined, JSON.stringify(body));
+    return Client.request(client, "GET", url, undefined, JSON.stringify(body));
 };

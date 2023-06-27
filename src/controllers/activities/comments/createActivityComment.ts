@@ -16,5 +16,5 @@ export async function createActivityComment(client: Client, activityId: string, 
         message
     };
 
-    return client.request("POST", url, undefined, JSON.stringify(body));
+    return Client.request(client, "POST", url, undefined, JSON.stringify(body));
 };

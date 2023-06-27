@@ -13,5 +13,5 @@ export async function verifyLogin(client: Client, verificationId: string, verifi
         code: verificationCode
     };
 
-    return client.request("POST", url, undefined, JSON.stringify(body));
+    return Client.request(client, "POST", url, undefined, JSON.stringify(body));
 };

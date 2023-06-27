@@ -23,5 +23,5 @@ export type GetActivitySummaryResponse = DefaultResponse & {
 export async function getActivitySummary(client: Client, activityId: string): Promise<GetActivitySummaryResponse> {
     const url = new URL(`${client.host}/api/activities/${activityId}/summary`);
 
-    return client.request("GET", url);
+    return Client.request(client, "GET", url);
 };

@@ -10,5 +10,5 @@ export async function updateActivityComment(client: Client, activityId: string, 
         message
     };
 
-    return client.request("PATCH", url, undefined, JSON.stringify(body));
+    return Client.request(client, "PATCH", url, undefined, JSON.stringify(body));
 };

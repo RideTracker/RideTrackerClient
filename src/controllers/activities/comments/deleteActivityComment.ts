@@ -6,5 +6,5 @@ export type DeleteActivityCommentResponse = DefaultResponse;
 export async function deleteActivityComment(client: Client, activityId: string, commentId: string): Promise<DeleteActivityCommentResponse> {
     const url = new URL(`${client.host}/api/activities/${activityId}/comments/${commentId}`);
 
-    return client.request("DELETE", url);
+    return Client.request(client, "DELETE", url);
 };

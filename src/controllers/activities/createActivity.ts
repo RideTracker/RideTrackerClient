@@ -17,5 +17,5 @@ export async function createActivity(client: Client, sessions: any, title?: stri
         bikeId
     };
 
-    return client.request("POST", url, undefined, JSON.stringify(body));
+    return Client.request(client, "POST", url, undefined, JSON.stringify(body));
 };

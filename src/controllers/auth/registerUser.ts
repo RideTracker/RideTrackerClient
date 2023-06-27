@@ -15,5 +15,5 @@ export async function registerUser(client: Client, firstname: string, lastname: 
         password
     };
 
-    return client.request("POST", url, undefined, JSON.stringify(body));
+    return Client.request(client, "POST", url, undefined, JSON.stringify(body));
 };

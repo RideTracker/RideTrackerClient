@@ -67,5 +67,5 @@ export type GetActivityResponse = DefaultResponse & {
 export async function getActivityById(client: Client, activityId: string): Promise<GetActivityResponse> {
     const url = new URL(`${client.host}/api/activities/${activityId}`);
 
-    return client.request("GET", url);
+    return Client.request(client, "GET", url);
 };

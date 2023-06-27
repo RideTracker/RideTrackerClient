@@ -10,5 +10,5 @@ export async function getMapsSearchPredictions(client: Client, search: string): 
     const url = new URL(`${client.host}/api/maps/search`);
     url.searchParams.append("search", search);
 
-    return client.request("GET", url);
+    return Client.request(client, "GET", url);
 };

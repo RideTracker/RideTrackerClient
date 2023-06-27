@@ -13,5 +13,5 @@ export async function getProfileBikes(client: Client, userId: string, offset: nu
         offset
     };
 
-    return client.request("POST", url, undefined, JSON.stringify(body));
+    return Client.request(client, "POST", url, undefined, JSON.stringify(body));
 };

@@ -22,5 +22,5 @@ export async function getFeed(client: Client, offset: number = 0, search?: strin
     if(timeline?.length)
         url.searchParams.append("timeline", timeline);
 
-    return client.request("GET", url);
+    return Client.request(client, "GET", url);
 };

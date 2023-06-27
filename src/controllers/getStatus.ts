@@ -11,5 +11,5 @@ export async function getStatus(client: Client, device: string): Promise<StatusR
 
     url.searchParams.append("device", device);
 
-    return client.request("GET", url);
+    return Client.request(client, "GET", url);
 };

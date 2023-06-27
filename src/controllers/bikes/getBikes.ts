@@ -19,5 +19,5 @@ export type GetBikesResponse = DefaultResponse & {
 export async function getBikes(client: Client): Promise<GetBikesResponse> {
     const url = new URL(`${client.host}/api/bikes`);
 
-    return client.request("GET", url);
+    return Client.request(client, "GET", url);
 };

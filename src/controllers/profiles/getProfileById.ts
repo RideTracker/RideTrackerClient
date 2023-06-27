@@ -19,5 +19,5 @@ export type GetProfileResponse = DefaultResponse & {
 export async function getProfileById(client: Client, userId: string): Promise<GetProfileResponse> {
     const url = new URL(`${client.host}/api/profiles/${userId}`);
 
-    return client.request("GET", url);
+    return Client.request(client, "GET", url);
 };

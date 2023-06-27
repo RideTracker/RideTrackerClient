@@ -8,5 +8,5 @@ export type PingResponse = DefaultResponse & {
 export async function ping(client: Client): Promise<PingResponse> {
     const url = new URL(`${client.host}/api/ping`);
 
-    return client.request("GET", url);
+    return Client.request(client, "GET", url);
 };

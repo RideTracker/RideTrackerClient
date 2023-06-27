@@ -15,15 +15,15 @@ export default class Client {
         this.token = token;
     };
 
-    async request(method: Method, url: URL, initialHeaders?: Record<string, string>, body?: BodyInit | undefined): Promise<any> {
+    static async request(client: Client, method: Method, url: URL, initialHeaders?: Record<string, string>, body?: BodyInit | undefined): Promise<any> {
         const headers: Record<string, string> = {
             ...initialHeaders
         };
 
-        headers["User-Agent"] = this.userAgent;
+        headers["User-Agent"] = client.userAgent;
 
-        if(this.token)
-            headers["Authorization"] = `Bearer ${this.token}`;
+        if(client.token)
+            headers["Authorization"] = `Bearer ${client.token}`;
 
         if(body)
             headers["Content-Type"] = "application/json";
@@ -34,10 +34,10 @@ export default class Client {
                 headers,
                 body
             }).then(async (response) => {
-                if(this.networkStatus !== "ONLINE") {
-                    this.networkStatus = "ONLINE";
+                if(client.networkStatus !== "ONLINE") {
+                    client.networkStatus = "ONLINE";
 
-                    this.events.filter((event) => event.event === "NETWORK_STATUS").forEach((event) => {
+                    client.events.filter((event) => event.event === "NETWORK_STATUS").forEach((event) => {
                         event.callback();
                     });
                 }
@@ -51,10 +51,10 @@ export default class Client {
             }).catch((error) => {
                 console.error(error);
 
-                if(this.networkStatus !== "OFFLINE") {
-                    this.networkStatus = "OFFLINE";
+                if(client.networkStatus !== "OFFLINE") {
+                    client.networkStatus = "OFFLINE";
 
-                    this.events.filter((event) => event.event === "NETWORK_STATUS").forEach((event) => {
+                    client.events.filter((event) => event.event === "NETWORK_STATUS").forEach((event) => {
                         event.callback();
                     });
                 }
@@ -69,14 +69,14 @@ export default class Client {
         callback: () => void;
     }[] = [];
 
-    addEventListener(event: "NETWORK_STATUS", callback: () => void) {
-        return this.events.push({
+    static addEventListener(client: Client, event: "NETWORK_STATUS", callback: () => void) {
+        return client.events.push({
             event, callback
         }) - 1;
     };
 
-    removeEventListener(event: "NETWORK_STATUS", listener: number) {
-        this.events.splice(listener, 1);
+    static removeEventListener(client: Client, listener: number) {
+        client.events.splice(listener, 1);
     };
 };
 

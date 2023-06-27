@@ -19,5 +19,5 @@ export type GetActivityCommentsResponse = DefaultResponse & {
 export async function getActivityComments(client: Client, activityId: string): Promise<GetActivityCommentsResponse> {
     const url = new URL(`${client.host}/api/activities/${activityId}/comments`);
 
-    return client.request("GET", url);
+    return Client.request(client, "GET", url);
 };

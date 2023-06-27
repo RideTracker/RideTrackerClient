@@ -8,5 +8,5 @@ export type GetRandomTokenResponse = DefaultResponse & {
 export async function getRandomToken(client: Client): Promise<GetRandomTokenResponse> {
     const url = new URL(`${client.host}/api/auth/random`);
 
-    return client.request("GET", url);
+    return Client.request(client, "GET", url);
 };

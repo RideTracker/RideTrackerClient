@@ -13,5 +13,5 @@ export async function loginUser(client: Client, email: string, password: string)
         password
     };
 
-    return client.request("POST", url, undefined, JSON.stringify(body));
+    return Client.request(client, "POST", url, undefined, JSON.stringify(body));
 };

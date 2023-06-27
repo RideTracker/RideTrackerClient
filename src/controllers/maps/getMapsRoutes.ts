@@ -15,7 +15,7 @@ export async function getMapsRoutes(client: Client, waypoints: {
 }[]): Promise<GetMapsRoutesResponse> {
     const url = new URL(`${client.host}/api/maps/routes`);
 
-    return client.request("POST", url, undefined, JSON.stringify({
+    return Client.request(client, "POST", url, undefined, JSON.stringify({
         waypoints
     }));
 };

@@ -17,5 +17,5 @@ export async function getMapsGeocode(client: Client, placeId: string): Promise<G
     const url = new URL(`${client.host}/api/maps/geocode`);
     url.searchParams.append("placeId", placeId);
 
-    return client.request("GET", url);
+    return Client.request(client, "GET", url);
 };
