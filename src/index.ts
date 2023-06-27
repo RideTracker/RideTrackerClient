@@ -1,4 +1,13 @@
+import { ping } from "./controllers/ping";
 import { Method } from "./models/Method";
+
+export function createClient(userAgent: string, host: string, token?: string): Client {
+    return {
+        userAgent,
+        host,
+        token
+    };
+};
 
 export default class Client {
     userAgent: string;
@@ -6,7 +15,9 @@ export default class Client {
     host: string;
     token?: string;
 
-    networkStatus: "UNKNOWN" | "ONLINE" | "OFFLINE" = "UNKNOWN";
+    static networkStatus: "UNKNOWN" | "ONLINE" | "OFFLINE" = "UNKNOWN";
+
+    static pingTimer: NodeJS.Timer | null = null;
 
     constructor(userAgent: string, host: string, token?: string) {
         this.userAgent = userAgent;
@@ -34,10 +45,10 @@ export default class Client {
                 headers,
                 body
             }).then(async (response) => {
-                if(client.networkStatus !== "ONLINE") {
-                    client.networkStatus = "ONLINE";
+                if(this.networkStatus !== "ONLINE") {
+                    this.networkStatus = "ONLINE";
 
-                    client.events.filter((event) => event.event === "NETWORK_STATUS").forEach((event) => {
+                    this.events.filter((event) => event.event === "NETWORK_STATUS").forEach((event) => {
                         event.callback();
                     });
                 }
@@ -51,12 +62,14 @@ export default class Client {
             }).catch((error) => {
                 console.error(error);
 
-                if(client.networkStatus !== "OFFLINE") {
-                    client.networkStatus = "OFFLINE";
+                if(this.networkStatus !== "OFFLINE") {
+                    this.networkStatus = "OFFLINE";
 
-                    client.events.filter((event) => event.event === "NETWORK_STATUS").forEach((event) => {
+                    this.events.filter((event) => event.event === "NETWORK_STATUS").forEach((event) => {
                         event.callback();
                     });
+
+                    this.ping(client);
                 }
 
                 reject(error);
@@ -64,19 +77,36 @@ export default class Client {
         });
     };
 
-    events: {
-        event: "NETWORK_STATUS";
+    static ping(client: Client) {
+        if(this.pingTimer !== null)
+            return;
+
+        this.pingTimer = setInterval(async () => {
+            try {
+                await ping(client);
+
+                if(this.pingTimer !== null)
+                    clearInterval(this.pingTimer);
+            }
+            catch {
+                console.log("Ping failed, trying again in 5 seconds...");
+            }
+        }, 5000);
+    };
+
+    static events: {
+        event: "NETWORK_STATUS" | "CONSECUTIVE_PING_FAILED";
         callback: () => void;
     }[] = [];
 
-    static addEventListener(client: Client, event: "NETWORK_STATUS", callback: () => void) {
-        return client.events.push({
+    static addEventListener(event: "NETWORK_STATUS" | "CONSECUTIVE_PING_FAILED", callback: () => void) {
+        return this.events.push({
             event, callback
         }) - 1;
     };
 
-    static removeEventListener(client: Client, listener: number) {
-        client.events.splice(listener, 1);
+    static removeEventListener(listener: number) {
+        this.events.splice(listener, 1);
     };
 };
 
