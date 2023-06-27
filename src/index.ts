@@ -34,22 +34,26 @@ export default class Client {
                 headers,
                 body
             }).then(async (response) => {
-                if(response.status !== 200)
-                    throw new Error("Unexpected HTTP error, status code " + response.status + " " + response.statusText + "\nBody: " + (await response.text()));
-            
-                const result = await response.json();
-                
                 if(this.networkStatus !== "ONLINE") {
+                    this.networkStatus = "ONLINE";
+
                     this.events.filter((event) => event.event === "NETWORK_STATUS").forEach((event) => {
                         event.callback();
                     });
                 }
+
+                if(response.status !== 200)
+                    throw new Error("Unexpected HTTP error, status code " + response.status + " " + response.statusText + "\nBody: " + (await response.text()));
+            
+                const result = await response.json();
 
                 resolve(result);
             }).catch((error) => {
                 console.error(error);
 
                 if(this.networkStatus !== "OFFLINE") {
+                    this.networkStatus = "OFFLINE";
+
                     this.events.filter((event) => event.event === "NETWORK_STATUS").forEach((event) => {
                         event.callback();
                     });
