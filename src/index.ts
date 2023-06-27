@@ -6,6 +6,8 @@ export default class Client {
     host: string;
     token?: string;
 
+    networkStatus: "UNKNOWN" | "ONLINE" | "OFFLINE" = "UNKNOWN";
+
     constructor(userAgent: string, host: string, token?: string) {
         this.userAgent = userAgent;
 
@@ -13,7 +15,7 @@ export default class Client {
         this.token = token;
     };
 
-    async request(method: Method, url: URL, initialHeaders?: Record<string, string>, body?: BodyInit | undefined) {
+    async request(method: Method, url: URL, initialHeaders?: Record<string, string>, body?: BodyInit | undefined): Promise<any> {
         const headers: Record<string, string> = {
             ...initialHeaders
         };
@@ -26,18 +28,51 @@ export default class Client {
         if(body)
             headers["Content-Type"] = "application/json";
 
-        const response = await fetch(url.toString(), {
-            method,
-            headers,
-            body
+        return new Promise((resolve, reject) => {
+            fetch(url.toString(), {
+                method,
+                headers,
+                body
+            }).then(async (response) => {
+                if(response.status !== 200)
+                    throw new Error("Unexpected HTTP error, status code " + response.status + " " + response.statusText + "\nBody: " + (await response.text()));
+            
+                const result = await response.json();
+                
+                if(this.networkStatus !== "ONLINE") {
+                    this.events.filter((event) => event.event === "NETWORK_STATUS").forEach((event) => {
+                        event.callback();
+                    });
+                }
+
+                resolve(result);
+            }).catch((error) => {
+                console.error(error);
+
+                if(this.networkStatus !== "OFFLINE") {
+                    this.events.filter((event) => event.event === "NETWORK_STATUS").forEach((event) => {
+                        event.callback();
+                    });
+                }
+
+                reject(error);
+            });
         });
+    };
 
-        if(response.status !== 200)
-            throw new Error("Unexpected HTTP error, status code " + response.status + " " + response.statusText + "\nBody: " + (await response.text()));
-        
-        const result = await response.json();
+    events: {
+        event: "NETWORK_STATUS";
+        callback: () => void;
+    }[] = [];
 
-        return result;
+    addEventListener(event: "NETWORK_STATUS", callback: () => void) {
+        return this.events.push({
+            event, callback
+        }) - 1;
+    };
+
+    removeEventListener(event: "NETWORK_STATUS", listener: number) {
+        this.events.splice(listener, 1);
     };
 };
 
