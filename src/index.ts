@@ -85,8 +85,11 @@ export default class Client {
             try {
                 await ping(client);
 
-                if(this.pingTimer !== null)
+                if(this.pingTimer !== null) {
                     clearInterval(this.pingTimer);
+
+                    this.pingTimer = null;
+                }
             }
             catch {
                 console.log("Ping failed, trying again in 5 seconds...");
