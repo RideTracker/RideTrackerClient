@@ -3,21 +3,10 @@ import { DefaultResponse } from "../../../models/DefaultResponse";
 
 export type GetActivitySummaryResponse = DefaultResponse & {
     activitySummary: {
-        startArea: string;
-        finishArea: string;
-
-        distance: number;
-        distancePersonalBest?: boolean;
-
-        averageSpeed: number;
-        averageSpeedPersonalBest?: boolean;
-
-        elevation: number;
-        elevationPersonalBest?: boolean;
-
-        maxSpeed: number;
-        maxSpeedPersonalBest?: boolean;
-    };
+        key: string;
+        value: number;
+        personalBest: boolean;
+    }[];
 };
 
 export async function getActivitySummary(client: Client, activityId: string): Promise<GetActivitySummaryResponse> {

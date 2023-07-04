@@ -5,6 +5,8 @@ export type GetActivityResponse = DefaultResponse & {
     activity: {
         id: string;
         polylines?: string[];
+        startArea?: string;
+        finishArea?: string;
 
         user: {
             id: string;
@@ -25,22 +27,11 @@ export type GetActivityResponse = DefaultResponse & {
             }
         };
         
-        summary?: {
-            startArea: string;
-            finishArea: string;
-
-            distance: number;
-            distancePersonalBest?: boolean;
-
-            averageSpeed: number;
-            averageSpeedPersonalBest?: boolean;
-
-            elevation: number;
-            elevationPersonalBest?: boolean;
-
-            maxSpeed: number;
-            maxSpeedPersonalBest?: boolean;
-        };
+        summary: {
+            key: string;
+            value: number;
+            personalBest: boolean;
+        }[];
 
         comments: number;
 
