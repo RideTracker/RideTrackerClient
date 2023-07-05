@@ -2,7 +2,9 @@ import Client from "../../..";
 import { DefaultResponse } from "../../../models/DefaultResponse";
 
 export type LoginVerificationResponse = DefaultResponse & {
-    key: string;
+    token: {
+        key: string;
+    };
 };
 
 export async function verifyLogin(client: Client, verificationId: string, verificationCode: string): Promise<LoginVerificationResponse> {

@@ -2,7 +2,10 @@ import Client from "../..";
 import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type AuthenticateUserResponse = DefaultResponse & {
-    key: string;
+    token: {
+        key: string;
+    };
+    
     user: {
         id: string;
         name: string;

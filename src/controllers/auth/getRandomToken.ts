@@ -2,7 +2,10 @@ import Client from "../..";
 import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type GetRandomTokenResponse = DefaultResponse & {
-    key: string;
+    email: string;
+    token: {
+        key: string;
+    };
 };
 
 export async function getRandomToken(client: Client): Promise<GetRandomTokenResponse> {
