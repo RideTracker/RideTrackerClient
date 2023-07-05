@@ -1,7 +1,8 @@
 import { ping } from "./controllers/ping";
+import { ClientToken } from "./models/ClientToken";
 import { Method } from "./models/Method";
 
-export function createClient(userAgent: string, host: string, token?: string): Client {
+export function createClient(userAgent: string, host: string, token?: ClientToken): Client {
     return {
         userAgent,
         host,
@@ -13,13 +14,13 @@ export default class Client {
     userAgent: string;
 
     host: string;
-    token?: string;
+    token?: ClientToken;
 
     static networkStatus: "UNKNOWN" | "ONLINE" | "OFFLINE" = "UNKNOWN";
 
     static pingTimer: NodeJS.Timer | null = null;
 
-    constructor(userAgent: string, host: string, token?: string) {
+    constructor(userAgent: string, host: string, token?: ClientToken) {
         this.userAgent = userAgent;
 
         this.host = host;
@@ -34,7 +35,7 @@ export default class Client {
         headers["User-Agent"] = client.userAgent;
 
         if(client.token)
-            headers["Authorization"] = `Bearer ${client.token}`;
+            headers["Authorization"] = `Basic ${client.token.email}:${client.token.key}`;
 
         if(body)
             headers["Content-Type"] = "application/json";
