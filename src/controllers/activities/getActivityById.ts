@@ -1,4 +1,5 @@
 import Client from "../..";
+import { ActivitySummaryKey } from "../../models/ActivitySummaryKey";
 import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type GetActivityResponse = DefaultResponse & {
@@ -28,7 +29,7 @@ export type GetActivityResponse = DefaultResponse & {
         };
         
         summary: {
-            key: string;
+            key: ActivitySummaryKey;
             value: number;
             personalBest: boolean;
         }[];
