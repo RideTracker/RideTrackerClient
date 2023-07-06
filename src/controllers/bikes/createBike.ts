@@ -4,16 +4,17 @@ import { DefaultResponse } from "../../models/DefaultResponse";
 export type CreateBikeResponse = DefaultResponse & {
     bike: {
         id: string;
-        name: string;
     };
 };
 
-export async function createBike(client: Client, name: string): Promise<CreateBikeResponse> {
+export async function createBike(client: Client, name: string, model: string, images: string[]): Promise<CreateBikeResponse> {
     const url = new URL(`${client.host}/api/bikes`);
 
     const body = {
-        name
+        name,
+        model,
+        images
     };
 
-    return Client.request(client, "GET", url, undefined, JSON.stringify(body));
+    return Client.request(client, "POST", url, undefined, JSON.stringify(body));
 };
