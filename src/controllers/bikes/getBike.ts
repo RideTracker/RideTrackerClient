@@ -9,7 +9,7 @@ export type GetBikeResponse = DefaultResponse & {
         image: string;
         activities: number;
 
-        summary?: {
+        summary: {
             key: string;
             value: number;
         }[];
