@@ -1,7 +1,7 @@
 {
     "name": "@ridetracker/ridetrackerclient",
     "description": "A TypeScript package to provide a low-level API client for the RideTrackerService.",
-    "version": "0.9.39",
+    "version": "0.9.40",
     "author": "Nora Söderlund",
     "license": "UNLICENSED",
     "main": "dist/index.js",

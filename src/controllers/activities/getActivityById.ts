@@ -15,18 +15,7 @@ export type GetActivityResponse = DefaultResponse & {
             avatar: string;
         };
 
-        bike?: {
-            id: string;
-            name: string;
-            model: string;
-            image: string;
-
-            summary?: {
-                rides: number;
-                distance: number;
-                elevation: number;
-            }
-        };
+        bike?: string;
         
         summary: {
             key: ActivitySummaryKey;
