@@ -7,12 +7,6 @@ export type GetBikesResponse = DefaultResponse & {
         name: string;
         model: string;
         image: string;
-
-        summary?: {
-            rides: number;
-            distance: number;
-            elevation: number;
-        };
     }[];
 };
 

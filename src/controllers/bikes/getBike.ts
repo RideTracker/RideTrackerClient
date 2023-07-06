@@ -9,10 +9,9 @@ export type GetBikeResponse = DefaultResponse & {
         image: string;
 
         summary?: {
-            rides: number;
-            distance: number;
-            elevation: number;
-        };
+            key: string;
+            value: number;
+        }[];
     };
 };
 
