@@ -7,6 +7,7 @@ export type GetBikeResponse = DefaultResponse & {
         name: string;
         model: string;
         image: string;
+        activities: number;
 
         summary?: {
             key: string;
