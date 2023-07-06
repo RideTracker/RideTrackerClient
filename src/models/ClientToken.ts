@@ -1,4 +1,5 @@
 export type ClientToken = {
-    email: string;
+    email?: string;
     key: string;
+    type?: "Basic" | "Bearer";
 };

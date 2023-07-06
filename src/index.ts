@@ -34,8 +34,12 @@ export default class Client {
 
         headers["User-Agent"] = client.userAgent;
 
-        if(client.token)
-            headers["Authorization"] = `Basic ${client.token.email}:${client.token.key}`;
+        if(client.token) {
+            if(client.token.type === "Bearer")
+                headers["Authorization"] = `Bearer ${client.token.key}`;
+            else
+                headers["Authorization"] = `Basic ${client.token.email}:${client.token.key}`;
+        }
 
         if(body)
             headers["Content-Type"] = "application/json";
