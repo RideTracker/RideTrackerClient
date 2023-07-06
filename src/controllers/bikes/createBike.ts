@@ -8,7 +8,7 @@ export type CreateBikeResponse = DefaultResponse & {
 };
 
 export async function createBike(client: Client, name: string, model: string, images: string[]): Promise<CreateBikeResponse> {
-    const url = new URL(`${client.host}/api/bikes`);
+    const url = new URL(`${client.host}/api/bikes/create`);
 
     const body = {
         name,
