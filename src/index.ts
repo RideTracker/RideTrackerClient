@@ -123,6 +123,7 @@ export * from "./models/DefaultResponse";
 
 export * from "./controllers/ping";
 export * from "./controllers/getStatus";
+export * from "./controllers/messages/createMessage";
 export * from "./controllers/activities/getActivityById";
 export * from "./controllers/activities/createActivity";
 export * from "./controllers/activities/summaries/getActivitySummary";
