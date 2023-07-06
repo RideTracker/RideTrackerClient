@@ -2,7 +2,10 @@ import Client from "../..";
 import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type LoginResponse = DefaultResponse & {
-    verification: string;
+    verification?: string;
+    token?: {
+        key: string;
+    };
 };
 
 export async function loginUser(client: Client, email: string, password: string): Promise<LoginResponse> {

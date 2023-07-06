@@ -2,7 +2,10 @@ import Client from "../..";
 import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type AuthRegisterResponse = DefaultResponse & {
-    verification: string;
+    verification?: string;
+    token?: {
+        key: string;
+    };
 };
 
 export async function registerUser(client: Client, firstname: string, lastname: string, email: string, password: string): Promise<AuthRegisterResponse> {
