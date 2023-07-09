@@ -3,8 +3,15 @@ import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type LoginResponse = DefaultResponse & {
     verification?: string;
+
     token?: {
         key: string;
+    };
+    
+    user?: {
+        id: string;
+        name: string;
+        avatar: string;
     };
 };
 
