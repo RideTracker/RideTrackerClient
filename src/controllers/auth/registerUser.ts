@@ -6,6 +6,11 @@ export type AuthRegisterResponse = DefaultResponse & {
     token?: {
         key: string;
     };
+    user?: {
+        id: string;
+        name: string;
+        avatar: string;
+    };
 };
 
 export async function registerUser(client: Client, firstname: string, lastname: string, email: string, password: string): Promise<AuthRegisterResponse> {
