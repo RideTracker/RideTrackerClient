@@ -10,6 +10,7 @@ export type AuthRegisterResponse = DefaultResponse & {
         id: string;
         name: string;
         avatar: string;
+        subscribed: boolean;
     };
 };
 

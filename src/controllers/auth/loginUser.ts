@@ -12,6 +12,7 @@ export type LoginResponse = DefaultResponse & {
         id: string;
         name: string;
         avatar: string;
+        subscribed: boolean;
     };
 };
 
