@@ -151,3 +151,4 @@ export * from "./controllers/user/deleteUser";
 export * from "./controllers/user/avatars/uploadUserAvatar";
 export * from "./controllers/auth/getRandomToken";
 export * from "./controllers/store/subscriptions/createStoreSubscription";
+export * from "./controllers/store/coupons/createStoreCouponDev";
