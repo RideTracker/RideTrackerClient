@@ -14,6 +14,8 @@ export type GetProfileResponse = DefaultResponse & {
             activities: number;
         }
     };
+
+    follow: boolean;
 };
 
 export async function getProfileById(client: Client, userId: string): Promise<GetProfileResponse> {
