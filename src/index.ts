@@ -146,6 +146,7 @@ export * from "./controllers/maps/getMapsGeocode";
 export * from "./controllers/maps/getMapsRoutes";
 export * from "./controllers/profiles/activities/getProfileActivities";
 export * from "./controllers/profiles/bikes/getProfileBikes";
+export * from "./controllers/profiles/follows/setUserFollow";
 export * from "./controllers/profiles/getProfileById";
 export * from "./controllers/user/deleteUser";
 export * from "./controllers/user/avatars/uploadUserAvatar";

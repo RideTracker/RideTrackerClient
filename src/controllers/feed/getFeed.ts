@@ -16,6 +16,11 @@ export type GetFeedResponse = DefaultResponse & {
         activities: number;
         polls: number;
     };
+
+    limits: {
+        activities: number;
+        polls: number;
+    };
 };
 
 export async function getFeed(client: Client, offsets: {
