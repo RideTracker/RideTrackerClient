@@ -6,12 +6,23 @@ export type GetFeedResponse = DefaultResponse & {
         id: string;
         timestamp: number;
     }[];
+
+    polls: {
+        id: string;
+        timestamp: number;
+    }[];
+
+    offsets: {
+        activities: number;
+        polls: number;
+    };
 };
 
-export async function getFeed(client: Client, offset: number = 0, search?: string, order?: string, timeline?: string): Promise<GetFeedResponse> {
+export async function getFeed(client: Client, offsets: {
+    activities: number;
+    polls: number;
+}, search?: string, order?: string, timeline?: string, includePolls: boolean = true): Promise<GetFeedResponse> {
     const url = new URL(`${client.host}/api/feed`);
-
-    url.searchParams.append("offset", offset.toString());
 
     if(search?.length)
         url.searchParams.append("search", search);
@@ -22,5 +33,12 @@ export async function getFeed(client: Client, offset: number = 0, search?: strin
     if(timeline?.length)
         url.searchParams.append("timeline", timeline);
 
-    return Client.request(client, "GET", url);
+    if(includePolls)
+        url.searchParams.append("includePolls", (includePolls)?("true"):("false"));
+
+    const body = {
+        offsets
+    };
+
+    return Client.request(client, "POST", url, undefined, JSON.stringify(body));
 };
