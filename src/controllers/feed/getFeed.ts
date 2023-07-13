@@ -26,9 +26,12 @@ export type GetFeedResponse = DefaultResponse & {
 export async function getFeed(client: Client, offsets: {
     activities: number;
     polls: number;
-}, search?: string, order?: string, timeline?: string, includePolls: boolean = true): Promise<GetFeedResponse> {
+}, relations: string, search?: string, order?: string, timeline?: string, includePolls: boolean = true): Promise<GetFeedResponse> {
     const url = new URL(`${client.host}/api/feed`);
 
+    if(relations?.length)
+        url.searchParams.append("relations", relations);
+        
     if(search?.length)
         url.searchParams.append("search", search);
 
