@@ -43,6 +43,8 @@ export type GetActivityResponse = DefaultResponse & {
     user: {
         likes: boolean;
     };
+
+    deleted?: boolean;
 };
 
 export async function getActivityById(client: Client, activityId: string): Promise<GetActivityResponse> {
