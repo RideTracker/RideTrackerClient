@@ -6,6 +6,8 @@ import { DefaultResponse } from "../../models/DefaultResponse";
 export type GetActivityResponse = DefaultResponse & {
     activity: {
         id: string;
+        title?: string;
+        description?: string;
         polylines?: string[];
         startArea?: string;
         finishArea?: string;
