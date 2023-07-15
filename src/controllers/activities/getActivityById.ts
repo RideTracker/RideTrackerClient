@@ -1,5 +1,6 @@
 import Client from "../..";
 import { ActivitySummaryKey } from "../../models/ActivitySummaryKey";
+import { ActivityVisibility } from "../../models/ActivityVisibility";
 import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type GetActivityResponse = DefaultResponse & {
@@ -8,6 +9,7 @@ export type GetActivityResponse = DefaultResponse & {
         polylines?: string[];
         startArea?: string;
         finishArea?: string;
+        visibility: ActivityVisibility;
 
         user: {
             id: string;
