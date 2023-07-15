@@ -7,15 +7,12 @@ export type CreateActivityResponse = DefaultResponse & {
     };
 };
 
-export async function createActivity(client: Client, sessions: any, visibility: string, title?: string, description?: string, bikeId?: string): Promise<CreateActivityResponse> {
+export async function createActivity(client: Client, sessions: any, visibility: string): Promise<CreateActivityResponse> {
     const url = new URL(`${client.host}/api/activities/create`);
 
     const body = {
         sessions,
-        visibility,
-        title,
-        description,
-        bikeId
+        visibility
     };
 
     return Client.request(client, "POST", url, undefined, JSON.stringify(body));

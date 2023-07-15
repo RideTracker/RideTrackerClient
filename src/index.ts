@@ -126,6 +126,7 @@ export * from "./controllers/getStatus";
 export * from "./controllers/messages/createMessage";
 export * from "./controllers/activities/getActivityById";
 export * from "./controllers/activities/createActivity";
+export * from "./controllers/activities/updateActivity";
 export * from "./controllers/activities/deleteActivity";
 export * from "./controllers/activities/comments/updateActivityComment";
 export * from "./controllers/activities/comments/getActivityComments";
