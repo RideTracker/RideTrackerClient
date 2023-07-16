@@ -4,7 +4,6 @@ import { DefaultResponse } from "../../../models/DefaultResponse";
 export type GetUserFollowingResponse = DefaultResponse & {
     following: {
         id: string;
-        followsBack: boolean;
         timestamp: number;
 
         follow: {

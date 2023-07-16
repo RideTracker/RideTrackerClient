@@ -5,6 +5,7 @@ export type GetUserFollowersResponse = DefaultResponse & {
     followers: {
         id: string;
         timestamp: number;
+        followsBack: boolean;
 
         follow: {
             id: string;
