@@ -5,6 +5,8 @@ export type GetRoutesByUserFeedResponse = DefaultResponse & {
     routes: {
         id: string;
         polyline: string;
+        distance: number;
+        duration: string;
         timestamp: number;
 
         waypoints: {
