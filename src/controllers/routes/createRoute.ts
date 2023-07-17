@@ -7,12 +7,12 @@ export type CreateRouteResponse = DefaultResponse & {
     };
 };
 
-export async function createRoute(client: Client, polyline: string, waypoints: {
+export async function createRoute(client: Client, polyline: string, distance: number, duration: string, waypoints: {
     type: "SEARCH_PREDICTION" | "PATH";
 
     searchPrediction?: {
         name: string;
-        placeId: string;
+        placeId?: string;
         location?: {
             latitude: number;
             longitude: number;
@@ -30,6 +30,8 @@ export async function createRoute(client: Client, polyline: string, waypoints: {
 
     const body = {
         polyline,
+        distance,
+        duration,
         waypoints
     };
 
