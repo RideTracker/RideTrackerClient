@@ -134,6 +134,10 @@ export * from "./controllers/activities/comments/getActivityComments";
 export * from "./controllers/activities/comments/deleteActivityComment";
 export * from "./controllers/activities/comments/createActivityComment";
 export * from "./controllers/activities/comments/summaries/getActivityCommentsSummary";
+
+export * from "./controllers/routes/createRoute";
+export * from "./controllers/routes/feed/getRoutesByUserFeed";
+
 export * from "./controllers/auth/authenticateUser";
 export * from "./controllers/auth/loginUser";
 export * from "./controllers/auth/registerUser";
