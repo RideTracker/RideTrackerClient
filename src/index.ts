@@ -136,6 +136,7 @@ export * from "./controllers/activities/comments/createActivityComment";
 export * from "./controllers/activities/comments/summaries/getActivityCommentsSummary";
 
 export * from "./controllers/routes/createRoute";
+export * from "./controllers/routes/feed/getRoutesByFeed";
 export * from "./controllers/routes/feed/getRoutesByUserFeed";
 
 export * from "./controllers/auth/authenticateUser";
