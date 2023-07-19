@@ -7,10 +7,11 @@ export type CreateActivityResponse = DefaultResponse & {
     };
 };
 
-export async function createActivity(client: Client, sessions: any, visibility: string): Promise<CreateActivityResponse> {
+export async function createActivity(client: Client, localId: string, sessions: any, visibility: string): Promise<CreateActivityResponse> {
     const url = new URL(`${client.host}/api/activities/create`);
 
     const body = {
+        localId,
         sessions,
         visibility
     };
