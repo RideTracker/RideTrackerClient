@@ -1,55 +1,19 @@
 import { ping } from "./controllers/ping";
-import { ClientToken } from "./models/ClientToken";
-import { Method } from "./models/Method";
 
-export function createClient(userAgent: string, host: string, token?: ClientToken): Client {
-    return {
-        userAgent,
-        host,
-        token
-    };
+import * as AuthClient from "@ridetracker/authclient";
+
+export function createRideTrackerClient(userAgent: string, host: string, token: AuthClient.AuthClientToken): RideTrackerClient {
+    return AuthClient.createAuthClient(userAgent, host, token);
 };
 
-export default class Client {
-    userAgent: string;
-
-    host: string;
-    token?: ClientToken;
-
+export default class RideTrackerClient extends AuthClient.AuthClient {
     static networkStatus: "UNKNOWN" | "ONLINE" | "OFFLINE" = "UNKNOWN";
 
     static pingTimer: NodeJS.Timer | null = null;
 
-    constructor(userAgent: string, host: string, token?: ClientToken) {
-        this.userAgent = userAgent;
-
-        this.host = host;
-        this.token = token;
-    };
-
-    static async request(client: Client, method: Method, url: URL, initialHeaders?: Record<string, string>, body?: BodyInit | undefined): Promise<any> {
-        const headers: Record<string, string> = {
-            ...initialHeaders
-        };
-
-        headers["User-Agent"] = client.userAgent;
-
-        if(client.token) {
-            if(client.token.type === "Bearer")
-                headers["Authorization"] = `Bearer ${client.token.key}`;
-            else
-                headers["Authorization"] = `Basic ${client.token.email}:${client.token.key}`;
-        }
-
-        if(body)
-            headers["Content-Type"] = "application/json";
-
+    static async request(client: RideTrackerClient, method: AuthClient.RequestMethod, url: URL, initialHeaders?: Record<string, string>, body?: BodyInit | undefined): Promise<any> {
         return new Promise((resolve, reject) => {
-            fetch(url.toString(), {
-                method,
-                headers,
-                body
-            }).then(async (response) => {
+            super.request(client, method, url, initialHeaders, body).then(async (response) => {
                 if(this.networkStatus !== "ONLINE") {
                     this.networkStatus = "ONLINE";
 
@@ -82,7 +46,7 @@ export default class Client {
         });
     };
 
-    static ping(client: Client) {
+    static ping(client: RideTrackerClient) {
         if(this.pingTimer !== null)
             return;
 
@@ -118,7 +82,6 @@ export default class Client {
     };
 };
 
-export { Method };
 export * from "./models/DefaultResponse";
 
 export * from "./controllers/ping";
