@@ -13,6 +13,9 @@ export default class RideTrackerClient extends AuthClient.AuthClient {
 
     static async request(client: RideTrackerClient, method: AuthClient.RequestMethod, url: URL, initialHeaders?: Record<string, string>, body?: BodyInit | undefined): Promise<any> {
         return new Promise((resolve, reject) => {
+            if(RideTrackerClient.networkStatus === "OFFLINE" && url.pathname !== "/api/ping")
+                return resolve({ success: false });
+
             super.request(client, method, url, initialHeaders, body).then(async (response) => {
                 if(this.networkStatus !== "ONLINE") {
                     this.networkStatus = "ONLINE";
@@ -28,8 +31,11 @@ export default class RideTrackerClient extends AuthClient.AuthClient {
                 const result = await response.json();
 
                 resolve(result);
-            }).catch((error) => {
+            }).catch((error: any) => {
                 console.error(error);
+
+                if(typeof(error) === "string" && error.startsWith("Unexpected HTTP error"))
+                    return resolve({ success: false });
 
                 if(this.networkStatus !== "OFFLINE") {
                     this.networkStatus = "OFFLINE";
@@ -63,7 +69,7 @@ export default class RideTrackerClient extends AuthClient.AuthClient {
             catch {
                 console.log("Ping failed, trying again in 5 seconds...");
             }
-        }, 5000);
+        }, 15000);
     };
 
     static events: {
