@@ -13,7 +13,7 @@ export default class RideTrackerClient extends AuthClient.AuthClient {
 
     static async request(client: RideTrackerClient, method: AuthClient.RequestMethod, url: URL, initialHeaders?: Record<string, string>, body?: BodyInit | undefined): Promise<any> {
         return new Promise((resolve, reject) => {
-            if(RideTrackerClient.networkStatus === "OFFLINE" && !url.toString().endsWith("/api/ping"))
+            if(RideTrackerClient.networkStatus === "OFFLINE" && !url.toString().includes("/api/ping"))
                 return resolve({ success: false });
 
             super.request(client, method, url, initialHeaders, body).then(async (response) => {
