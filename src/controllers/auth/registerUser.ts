@@ -2,6 +2,8 @@ import Client from "../..";
 import { DefaultResponse } from "../../models/DefaultResponse";
 
 export type AuthRegisterResponse = DefaultResponse & {
+    field?: string;
+    
     verification?: string;
     token?: {
         key: string;
