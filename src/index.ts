@@ -109,6 +109,7 @@ export * from "./controllers/routes/feed/getRoutesByFeed";
 export * from "./controllers/routes/feed/getRoutesByUserFeed";
 
 export * from "./controllers/devices/createDevice";
+export * from "./controllers/devices/getDevices";
 
 export * from "./controllers/auth/authenticateUser";
 export * from "./controllers/auth/loginUser";
